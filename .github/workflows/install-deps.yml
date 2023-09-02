@@ -1,0 +1,19 @@
+name: Install NPM dependencies
+
+on:
+  push:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  install-deps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.0
+          cache: 'npm'
+      - run: npm ci
