@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:client": "nx run client:serve"
+    "start:client": "nx run client:serve",
+    "build:client": "nx run client:build"
   },
   "private": true,
   "devDependencies": {

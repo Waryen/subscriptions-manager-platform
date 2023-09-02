@@ -6,7 +6,7 @@ type Props = {
   subscriptions: Subscription[];
 };
 
-export function TotalSubscriptions({ subscriptions }: Props) {
+export function SubscriptionsCosts({ subscriptions }: Props) {
   const { costPerDay, costPerMonth, costPerYear } =
     getSubscriptionCosts(subscriptions);
 
@@ -23,7 +23,7 @@ export function TotalSubscriptions({ subscriptions }: Props) {
           <Text as="span" fontWeight="bold">
             day
           </Text>{' '}
-          for your current subscriptions
+          for your current subscriptions.
         </Text>
         <Text>
           You are paying about{' '}
@@ -34,7 +34,7 @@ export function TotalSubscriptions({ subscriptions }: Props) {
           <Text as="span" fontWeight="bold">
             month
           </Text>{' '}
-          for your current subscriptions
+          for your current subscriptions.
         </Text>{' '}
         <Text>
           You are paying about{' '}
@@ -45,7 +45,7 @@ export function TotalSubscriptions({ subscriptions }: Props) {
           <Text as="span" fontWeight="bold">
             year
           </Text>{' '}
-          for your current subscriptions
+          for your current subscriptions.
         </Text>
       </VStack>
     </Alert>

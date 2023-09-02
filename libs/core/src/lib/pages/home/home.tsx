@@ -2,7 +2,7 @@ import { Button, Text, VStack } from '@chakra-ui/react';
 import { SubscriptionsTable } from './subscriptions-table';
 import { useState } from 'react';
 import { CreateSubscription } from './create-subscription';
-import { TotalSubscriptions } from './total-subscriptions';
+import { SubscriptionsCosts } from './subscriptions-costs';
 import { useSubscriptionsStore } from '@subscriptions-manager-platform/stores';
 
 export function Home() {
@@ -28,7 +28,7 @@ export function Home() {
       )}
       {subscriptions.length && (
         <>
-          <TotalSubscriptions subscriptions={subscriptions} />
+          <SubscriptionsCosts subscriptions={subscriptions} />
           <Button
             alignSelf="flex-start"
             size="lg"
