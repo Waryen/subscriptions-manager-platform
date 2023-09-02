@@ -1,9 +1,7 @@
-import { Text, Flex, Heading, Link } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Text, Flex, Heading, Link } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 
 export function AppLayout() {
-  const currentYear = new Date().getFullYear().toString();
-
   return (
     <Flex flexDirection="column" maxWidth="full" minHeight="100vh" p={0}>
       <Flex
@@ -37,18 +35,22 @@ export function AppLayout() {
         p={10}
       >
         <Text color="white">
-          Copyrights {currentYear} -{" "}
+          Built by{' '}
           <Link
             color="white"
             href="https://github.com/Waryen"
             textDecoration="underline"
             textUnderlineOffset={5}
             isExternal
-            _hover={{ color: "teal.100" }}
-            _focus={{ color: "teal.100" }}
+            _hover={{ color: 'teal.100' }}
+            _focus={{ color: 'teal.100' }}
           >
             Jonathan Gomand
           </Link>
+        </Text>
+        <Text color="white" fontStyle="italic" textAlign="center" mt={2}>
+          This website does not collect any data, everything you provide here is
+          stored on your browser storage.
         </Text>
       </Flex>
     </Flex>
