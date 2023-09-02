@@ -11,10 +11,10 @@ export const router = createBrowserRouter([
         path: Routes.HOME,
         element: <Home />,
       },
+      {
+        path: Routes.NOT_FOUND,
+        element: <NotFound />,
+      },
     ],
-  },
-  {
-    path: Routes.NOT_FOUND,
-    element: <NotFound />,
   },
 ]);
