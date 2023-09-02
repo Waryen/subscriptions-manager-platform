@@ -2,10 +2,7 @@ import { Module } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
 import { SubscriptionResolver } from './subscription.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
-import {
-  Subscription,
-  SubscriptionSchema,
-} from './schemas/subscription.schema';
+import { Subscription, SubscriptionSchema } from './schema/subscription.schema';
 
 @Module({
   imports: [

@@ -4,7 +4,7 @@ import {
   SubscriptionStatus,
 } from '@subscriptions-manager-platform/stores';
 import mongoose, { HydratedDocument } from 'mongoose';
-import { User } from '../../user/schemas/user.schema';
+import { User } from '../../user/schema/user.schema';
 
 export type SubscriptionDocument = HydratedDocument<Subscription>;
 

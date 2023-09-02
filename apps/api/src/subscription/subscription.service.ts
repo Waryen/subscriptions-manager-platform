@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateSubscriptionInput } from './dto/create-subscription.input';
 import { UpdateSubscriptionInput } from './dto/update-subscription.input';
 import { InjectModel } from '@nestjs/mongoose';
-import { Subscription } from './schemas/subscription.schema';
+import { Subscription } from './schema/subscription.schema';
 import { Model } from 'mongoose';
 
 @Injectable()

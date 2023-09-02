@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { SubscriptionService } from './subscription.service';
-import { Subscription } from './schemas/subscription.schema';
+import { Subscription } from './schema/subscription.schema';
 import { CreateSubscriptionInput } from './dto/create-subscription.input';
 import { UpdateSubscriptionInput } from './dto/update-subscription.input';
 
