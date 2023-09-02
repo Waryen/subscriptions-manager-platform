@@ -1,32 +1,15 @@
-name: Build and Deploy
+name: Vercel Production Deployment
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
-  workflow_run:
-    workflows: [Lint and test]
-    types: [requested]
+  push:
     branches: [prod]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.12.0
-          cache: 'npm'
-      # nx is not found when retrieving cache
-      - name: Install dependencies
-        run: npm ci
-      - name: Build the apps
-        run: npm run build:client
-
-  deploy:
+  Deploy-Production:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
