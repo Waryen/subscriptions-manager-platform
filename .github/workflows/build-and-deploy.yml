@@ -5,9 +5,10 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
-  push:
-    branches:
-      - 'prod'
+  workflow_run:
+    workflows: [Lint and test]
+    types: [requested]
+    branches: [prod]
 
 jobs:
   build:

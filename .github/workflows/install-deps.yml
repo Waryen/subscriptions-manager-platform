@@ -1,10 +1,6 @@
 name: Install NPM dependencies
 
-on:
-  push:
-    paths:
-      - 'package.json'
-      - 'package-lock.json'
+on: push
 
 jobs:
   install-deps:

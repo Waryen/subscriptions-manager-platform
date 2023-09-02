@@ -1,6 +1,9 @@
 name: Lint and test
 
-on: push
+on:
+  workflow_run:
+    workflows: [Install NPM dependencies]
+    types: [completed]
 
 jobs:
   lint:
