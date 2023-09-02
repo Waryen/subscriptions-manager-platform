@@ -17,6 +17,7 @@ import {
   CreateSubscription,
   useSubscriptionsStore,
   SubscriptionRate,
+  SubscriptionStatus,
 } from '@subscriptions-manager-platform/stores';
 import { useEffect, useMemo } from 'react';
 
@@ -37,6 +38,11 @@ export function EditSubscription({ onClose, subscriptionId, isOpen }: Props) {
   });
 
   const subscriptionsRate = Object.entries(SubscriptionRate).map((s) => ({
+    value: s[1],
+    name: s[0],
+  }));
+
+  const subscriptionsStatus = Object.entries(SubscriptionStatus).map((s) => ({
     value: s[1],
     name: s[0],
   }));
@@ -83,16 +89,26 @@ export function EditSubscription({ onClose, subscriptionId, isOpen }: Props) {
                 ))}
               </Select>
             </FormControl>
-            <FormControl isRequired>
+            <FormControl isRequired mb={3}>
               <FormLabel>Price</FormLabel>
               <Input
                 type="number"
                 {...register('price', {
-                  min: 1,
+                  min: 0.1,
                   required: true,
                   valueAsNumber: true,
                 })}
               />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Status</FormLabel>
+              <Select {...register('status', { required: true })}>
+                {subscriptionsStatus.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.name}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
           </form>
         </ModalBody>

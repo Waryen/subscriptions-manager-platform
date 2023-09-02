@@ -1,11 +1,16 @@
 import {
   Subscription,
   SubscriptionRate,
+  SubscriptionStatus,
 } from '@subscriptions-manager-platform/stores';
 
 export function getSubscriptionCosts(subs: Subscription[]) {
   const costs = subs.reduce(
     (acc, it) => {
+      if (it.status === SubscriptionStatus.OFF) {
+        return acc;
+      }
+
       switch (it.rate) {
         case SubscriptionRate.DAILY:
           acc.costPerMonth += it.price * 30;

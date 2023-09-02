@@ -16,6 +16,7 @@ import {
   useSubscriptionsStore,
   SubscriptionRate,
   CreateSubscription,
+  SubscriptionStatus,
 } from '@subscriptions-manager-platform/stores';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -34,10 +35,16 @@ export function CreateSubscription({ isOpen, onClose }: Props) {
       name: '',
       price: 1,
       rate: SubscriptionRate.DAILY,
+      status: SubscriptionStatus.ACTIVE,
     },
   });
 
   const subscriptionsRate = Object.entries(SubscriptionRate).map((s) => ({
+    value: s[1],
+    name: s[0],
+  }));
+
+  const subscriptionsStatus = Object.entries(SubscriptionStatus).map((s) => ({
     value: s[1],
     name: s[0],
   }));
@@ -79,7 +86,7 @@ export function CreateSubscription({ isOpen, onClose }: Props) {
                 ))}
               </Select>
             </FormControl>
-            <FormControl isRequired>
+            <FormControl isRequired mb={3}>
               <FormLabel>Price</FormLabel>
               <Input
                 type="number"
@@ -90,6 +97,16 @@ export function CreateSubscription({ isOpen, onClose }: Props) {
                   valueAsNumber: true,
                 })}
               />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Status</FormLabel>
+              <Select {...register('status', { required: true })}>
+                {subscriptionsStatus.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.name}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
           </form>
         </ModalBody>

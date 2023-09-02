@@ -53,6 +53,7 @@ export function SubscriptionsTable({ subscriptions }: Props) {
               <Th>Description</Th>
               <Th>Rate</Th>
               <Th>Price</Th>
+              <Th>Status</Th>
               <Th>Edit</Th>
               <Th>Delete</Th>
             </Tr>
@@ -64,6 +65,7 @@ export function SubscriptionsTable({ subscriptions }: Props) {
                 <Td>{s.description || 'No description provided'}</Td>
                 <Td>{s.rate}</Td>
                 <Td>{s.price}</Td>
+                <Td>{s.status}</Td>
                 <Td>
                   <Button
                     colorScheme="teal"

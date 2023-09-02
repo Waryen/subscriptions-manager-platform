@@ -9,17 +9,23 @@ export enum SubscriptionRate {
   YEARLY = 'yearly',
 }
 
+export enum SubscriptionStatus {
+  ACTIVE = 'Active',
+  OFF = 'Off',
+}
+
 export type Subscription = {
   id: string;
   name: string;
   description?: string;
   price: number;
+  status: SubscriptionStatus;
   rate: SubscriptionRate;
 };
 
 export type CreateSubscription = Pick<
   Subscription,
-  'name' | 'description' | 'price' | 'rate'
+  'name' | 'description' | 'price' | 'rate' | 'status'
 >;
 
 type SubscriptionStore = {
