@@ -7,7 +7,7 @@ env:
 on:
   workflow_run:
     workflows: [Lint and test]
-    types: [requested]
+    types: [completed]
     branches: [prod]
 
 jobs:
@@ -16,16 +16,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          node-version: 18.12.0
-          cache: 'npm'
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Build the apps
         run: npm run build:client
 
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

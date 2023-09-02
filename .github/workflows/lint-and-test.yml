@@ -11,10 +11,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          node-version: 18.12.0
-          cache: 'npm'
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Lint every apps and libs
         run: npm run lint:all
 
@@ -23,9 +26,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          node-version: 18.12.0
-          cache: 'npm'
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Test every apps and libs
         run: npm run test:all
