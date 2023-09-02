@@ -8,17 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Create cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ runner.os }}-
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18.12.0
-
+          cache: 'npm'
       - run: npm ci
