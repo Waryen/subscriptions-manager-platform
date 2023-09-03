@@ -22,6 +22,7 @@ const uri =
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+      playground: true,
     }),
     UserModule,
     SubscriptionModule,

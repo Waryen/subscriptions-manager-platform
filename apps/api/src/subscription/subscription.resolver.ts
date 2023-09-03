@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { SubscriptionService } from './subscription.service';
-import { Subscription } from './schema/subscription.schema';
 import { CreateSubscriptionInput } from './dto/create-subscription.input';
 import { UpdateSubscriptionInput } from './dto/update-subscription.input';
+import { Subscription } from './entities/subscription.entity';
 
 @Resolver(() => Subscription)
 export class SubscriptionResolver {
@@ -16,7 +16,7 @@ export class SubscriptionResolver {
     return this.subscriptionService.create(createSubscriptionInput);
   }
 
-  @Query(() => [Subscription], { name: 'subscription' })
+  @Query(() => [Subscription], { name: 'subscriptions' })
   async findAll() {
     return this.subscriptionService.findAll();
   }

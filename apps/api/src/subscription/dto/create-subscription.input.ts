@@ -1,4 +1,4 @@
-import { InputType, Field, Int } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 import {
   SubscriptionRate,
   SubscriptionStatus,
@@ -33,7 +33,7 @@ export class CreateSubscriptionInput {
   )
   @Min(0.1, { message: 'price property must be greater than 0.1' })
   @Max(1000, { message: "price property can't be greater than 1000" })
-  @Field(() => Int)
+  @Field(() => Number)
   price: number;
 
   @IsEnum(SubscriptionRate, {

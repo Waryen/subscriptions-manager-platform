@@ -2,14 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { CreateSubscriptionInput } from './dto/create-subscription.input';
 import { UpdateSubscriptionInput } from './dto/update-subscription.input';
 import { InjectModel } from '@nestjs/mongoose';
-import { Subscription } from './schema/subscription.schema';
 import { Model } from 'mongoose';
+import {
+  Subscription,
+  SubscriptionDocument,
+} from './entities/subscription.schema';
 
 @Injectable()
 export class SubscriptionService {
   constructor(
     @InjectModel(Subscription.name)
-    private subscriptionModel: Model<Subscription>
+    private subscriptionModel: Model<SubscriptionDocument>
   ) {}
 
   async create(
@@ -23,17 +26,20 @@ export class SubscriptionService {
     return this.subscriptionModel.find().exec();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<Subscription> {
     return this.subscriptionModel.findById(id).exec();
   }
 
-  update(id: string, updateSubscriptionInput: UpdateSubscriptionInput) {
+  update(
+    id: string,
+    updateSubscriptionInput: UpdateSubscriptionInput
+  ): Promise<Subscription> {
     return this.subscriptionModel
       .findByIdAndUpdate(id, updateSubscriptionInput)
       .exec();
   }
 
-  remove(id: string) {
+  remove(id: string): Promise<Subscription> {
     return this.subscriptionModel.findByIdAndRemove(id).exec();
   }
 }

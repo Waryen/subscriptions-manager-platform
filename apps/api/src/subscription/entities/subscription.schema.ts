@@ -4,7 +4,7 @@ import {
   SubscriptionStatus,
 } from '@subscriptions-manager-platform/stores';
 import mongoose, { HydratedDocument } from 'mongoose';
-import { User } from '../../user/schema/user.schema';
+import { User } from '../../user/entities/user.schema';
 
 export type SubscriptionDocument = HydratedDocument<Subscription>;
 
@@ -16,7 +16,7 @@ export class Subscription {
   @Prop({ type: String })
   description: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: Number })
   price: number;
 
   @Prop({
