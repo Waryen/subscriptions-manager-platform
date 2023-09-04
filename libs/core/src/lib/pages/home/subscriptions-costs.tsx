@@ -7,46 +7,25 @@ type Props = {
 };
 
 export function SubscriptionsCosts({ subscriptions }: Props) {
-  const { costPerDay, costPerMonth, costPerYear } =
-    getSubscriptionCosts(subscriptions);
+  const costs = Object.entries(getSubscriptionCosts(subscriptions));
 
   return (
     <Alert status="info" my={5}>
       <AlertIcon />
       <VStack alignItems="start">
-        <Text>
-          You are paying about{' '}
-          <Text as="span" fontWeight="bold">
-            {costPerDay} €
-          </Text>{' '}
-          per{' '}
-          <Text as="span" fontWeight="bold">
-            day
-          </Text>{' '}
-          for your current subscriptions.
-        </Text>
-        <Text>
-          You are paying about{' '}
-          <Text as="span" fontWeight="bold">
-            {costPerMonth} €
-          </Text>{' '}
-          per{' '}
-          <Text as="span" fontWeight="bold">
-            month
-          </Text>{' '}
-          for your current subscriptions.
-        </Text>{' '}
-        <Text>
-          You are paying about{' '}
-          <Text as="span" fontWeight="bold">
-            {costPerYear} €
-          </Text>{' '}
-          per{' '}
-          <Text as="span" fontWeight="bold">
-            year
-          </Text>{' '}
-          for your current subscriptions.
-        </Text>
+        {costs.map(([name, cost]) => (
+          <Text key={name}>
+            You are paying about{' '}
+            <Text as="span" fontWeight="bold">
+              {cost} €
+            </Text>{' '}
+            per{' '}
+            <Text as="span" fontWeight="bold">
+              {name}
+            </Text>{' '}
+            for your current subscriptions.
+          </Text>
+        ))}
       </VStack>
     </Alert>
   );

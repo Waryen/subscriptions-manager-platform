@@ -45,8 +45,8 @@ export function getSubscriptionCosts(subs: Subscription[]) {
 
   // Round and return the values to two decimal places
   return {
-    costPerMonth: parseFloat(costs.costPerMonth.toFixed(2)),
-    costPerDay: parseFloat(costs.costPerDay.toFixed(2)),
-    costPerYear: parseFloat(costs.costPerYear.toFixed(2)),
+    month: parseFloat(costs.costPerMonth.toFixed(2)),
+    day: parseFloat(costs.costPerDay.toFixed(2)),
+    year: parseFloat(costs.costPerYear.toFixed(2)),
   };
 }
